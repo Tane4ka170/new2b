@@ -17,6 +17,7 @@ body {
 .pw-container {
   width: 400px;
   background-color: #28904c;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .pw-header {
@@ -55,8 +56,25 @@ body {
 }
 
 .pw-body {
-  padding: 1rem;
+  padding: 0 1rem 1rem;
 }
 
 .form-control {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.75rem 0;
+  color: white;
+}
+
+.generate {
+  display: block;
+  background-color: #4c2890;
+  border: none;
+  color: #68b181;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  width: 100%;
 }
