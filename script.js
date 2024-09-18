@@ -33,7 +33,20 @@ function generatePassword() {
 
   let password = "";
 
-  for (let i = 0; i < len; i++) {
+  if (upperEl.checked) {
+    password += getUppercase();
+  }
+  if (lowerEl.checked) {
+    password += getLowercase();
+  }
+  if (numberEl.checked) {
+    password += getNumber();
+  }
+  if (symbolEl.checked) {
+    password += getSymbol();
+  }
+
+  for (let i = password.length; i < len; i++) {
     const x = generateX();
     password += x;
   }
@@ -42,9 +55,26 @@ function generatePassword() {
 
 function generateX() {
   const xs = [];
-  if (upperEl.checked) {
-    xs.push(getUppercase());
-  }
+
+  if (xs.length === 0) return "";
+
+  return xs[Math.floor(Math.random() * xs.length)];
 }
 
 generateEl.addEventListener("click", generatePassword);
+
+copyEl.addEventListener("click", () => {
+  const textarea = document.createElement("textarea");
+  const password = pwEl.innerText;
+
+  if (!password) {
+    return;
+  }
+
+  textarea.value = password;
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand("copy");
+  textarea.remove();
+  alert("Password copied to clipboard");
+});
